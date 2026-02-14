@@ -1,15 +1,22 @@
-let x;
+let unit = document.getElementById("unit");
+let weight = document.getElementById("weight");
+let results = document.getElementById("result");
 
-let randomnum;
+function convert(){
+    let finalunit = unit.value;
+    let finalweight= Number(weight.value);
+    let result;
 
-document.getElementById("submit").onclick=function (){
-    x = document.getElementById("x").value;
-    x=Number(x);
-    randomnum=Math.floor(Math.random()*x) + 1;
-
-    console.log(randomnum);
+    if(finalunit == "Kg" ){
+        result = finalweight*2.204;
+        document.getElementById("result").textContent = result.toFixed(2) + "Lbs" ;
+    }
+    else{
+        result = finalweight/2.204;
+        document.getElementById("result").textContent = result.toFixed(2) + "Kg";
+    }
+    
 }
 
-
-
-
+weight.oninput = convert;
+unit.onchange = convert;
